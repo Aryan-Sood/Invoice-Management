@@ -12,7 +12,7 @@ class Invoices(models.Model):
 
 class InvoiceDetails(models.Model):
     id = models.AutoField(primary_key=True)
-    invoice = models.ForeignKey(Invoices, related_name='details', on_delete = models.CASCADE)
+    invoice = models.ForeignKey(Invoices, related_name='invoice_details', on_delete = models.CASCADE)
     description = models.CharField(max_length=255)
     quantity = models.PositiveIntegerField()
     unit_price = models.DecimalField(max_digits=10, decimal_places=2)
