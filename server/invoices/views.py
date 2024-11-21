@@ -15,7 +15,10 @@ class InvoiceViewSet(viewsets.ModelViewSet):
         invoice = self.get_object()
         details = InvoiceDetails.objects.filter(invoice = invoice)
         serializer = InvoiceDetailsSerializer(details, many = True)
-        return Response(serializer.data)
+        print('serializer data', serializer.data)
+        if serializer.is_valid():
+            return Response(serializer.data)
+        print('error with serializing', serializer.errors)
 
 class InvoiceDetailViewSet(viewsets.ModelViewSet):
     queryset = InvoiceDetails.objects.all()

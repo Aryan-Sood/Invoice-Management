@@ -1,6 +1,7 @@
 from django.db import models
 
 class Invoices(models.Model):
+    # id = models.AutoField(primary_key=True)
     id = models.AutoField(primary_key=True)
     invoice_number = models.CharField(max_length=50, unique=True)
     customer_name = models.CharField(max_length=255)
@@ -12,7 +13,8 @@ class Invoices(models.Model):
 
 class InvoiceDetails(models.Model):
     id = models.AutoField(primary_key=True)
-    invoice = models.ForeignKey(Invoices, related_name='invoice_details', on_delete = models.CASCADE)
+    # invoice = models.ForeignKey(Invoices, related_name='invoice_details', on_delete = models.CASCADE)
+    # invoice = models.JSONField()
     description = models.CharField(max_length=255)
     quantity = models.PositiveIntegerField()
     unit_price = models.DecimalField(max_digits=10, decimal_places=2)

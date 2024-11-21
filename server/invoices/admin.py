@@ -8,4 +8,5 @@ class InvoiceAdmin(admin.ModelAdmin):
 
 @admin.register(InvoiceDetails)
 class InvoiceDetailAdmin(admin.ModelAdmin):
-    list_display = ['invoice', 'description', 'quantity', 'unit_price', 'line_total']
+    # list_display = ['invoice', 'description', 'quantity', 'unit_price', 'line_total']
+    list_display = ['description', 'quantity', 'unit_price', 'line_total']
