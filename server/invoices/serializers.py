@@ -1,5 +1,11 @@
 from rest_framework import serializers
 from .models import Invoices, InvoiceDetails   
+class InvoiceDetailsSerializer(serializers.ModelSerializer):
+    # invoice = serializers.PrimaryKeyRelatedField(queryset=Invoices.objects.all())
+    class Meta:
+        model = InvoiceDetails
+        # fields = ['id', 'description', 'quantity', 'unit_price', 'line_total', 'invoice']
+        fields = ['id', 'description', 'quantity', 'unit_price', 'line_total']
 
 class InvoiceSerializer(serializers.ModelSerializer):
     # invoice_details = InvoiceDetailsSerializer(many=True)
@@ -17,9 +23,3 @@ class InvoiceSerializer(serializers.ModelSerializer):
             InvoiceDetails.objects.create(invoice = invoice, **detail_data)
         
         return invoice
-
-class InvoiceDetailsSerializer(serializers.ModelSerializer):
-    # invoice = serializers.PrimaryKeyRelatedField(queryset=Invoices.objects.all())
-    class Meta:
-        model = InvoiceDetails
-        fields = ['id', 'description', 'quantity', 'unit_price', 'line_total']

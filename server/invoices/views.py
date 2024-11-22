@@ -12,13 +12,15 @@ class InvoiceViewSet(viewsets.ModelViewSet):
 
     @action(detail=True, methods=['get'])
     def details(self, request, pk=None):
+        print('running details')
         invoice = self.get_object()
+        print(' object', invoice)
         details = InvoiceDetails.objects.filter(invoice = invoice)
         serializer = InvoiceDetailsSerializer(details, many = True)
         print('serializer data', serializer.data)
-        if serializer.is_valid():
-            return Response(serializer.data)
-        print('error with serializing', serializer.errors)
+        # if serializer.is_valid():
+        # print('error with serializing', serializer.errors)
+        return Response(serializer.data)
 
 class InvoiceDetailViewSet(viewsets.ModelViewSet):
     queryset = InvoiceDetails.objects.all()

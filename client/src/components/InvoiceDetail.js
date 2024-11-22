@@ -13,7 +13,7 @@ const InvoiceDetail = () => {
     const fetchInvoiceDetails = async () => {
       try {
         // Replace with your Django backend endpoint
-        const response = await axios.get(`/api/invoices/${id}/`);
+        const response = await axios.get(`http://127.0.0.1:8000/api/invoices/${id}/details/`).then(response => console.log('response', response.data));
         setInvoice(response.data);
         setLoading(false);
       } catch (err) {

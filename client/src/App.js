@@ -21,7 +21,6 @@ const App = () => {
         
         <div className="container mx-auto p-6">
           <Routes>
-            {/* Define Routes for each component */}
             <Route path="/" element={<InvoiceList />} />
             <Route path="/create" element={<CreateInvoice />} />
             <Route path="/invoices/:id" element={<InvoiceDetail />} />
